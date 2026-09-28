@@ -1,7 +1,14 @@
 # Pathfinding
 Pathfinding algorithm
 
-## Instal
+## Install
+
+### Arc Linux
 ```bash
 sudo pacman -S raylib
+```
+
+### MacOS
+```bash
+brew install raylib
 ```

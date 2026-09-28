@@ -6,16 +6,21 @@ CXXFLAGS := -std=c++17
 TARGET := bin/game.out
 SOURCES := src/main.cpp
 
+# OS Detection
+UNAME_S := $(shell uname -s)
+
 # Raylib
-RAYFLAGS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
-
-
-# Gurobi-specific
-GUROBI_HOME := /opt/gurobi1303/linux64
-GUROBI_INC := $(GUROBI_HOME)/include
-GUROBI_LIB := $(GUROBI_HOME)/lib
-GUROBI_LIBS := -lgurobi_c++ -lgurobi130
-
+ifeq ($(UNAME_S), Darwin)
+    RAYLIB_PREFIX := $(shell brew --prefix raylib)
+    RAYFLAGS := -I$(RAYLIB_PREFIX)/include -L$(RAYLIB_PREFIX)/lib -lraylib \
+		-framework IOKit \
+		-framework Cocoa \
+		-framework OpenGL
+else ifeq ($(UNAME_S),Linux)
+    RAYFLAGS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+else
+    $(error Unsupported OS: $(UNAME_S))
+endif
 
 DEFAULT_GOAL := run
 
