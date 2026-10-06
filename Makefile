@@ -1,35 +1,17 @@
-# Compiler and Flags
-CXX := g++
-CXXFLAGS := -std=c++17
+BUILD_DIR := build
 
-# Target and Source Files
-TARGET := bin/game.out
-SOURCES := src/main.cpp
+.DEFAULT_GOAL := run
+.PHONY: configure compile run clean
 
-# OS Detection
-UNAME_S := $(shell uname -s)
+configure:
+	cmake -B $(BUILD_DIR)
 
-# Raylib
-ifeq ($(UNAME_S), Darwin)
-    RAYLIB_PREFIX := $(shell brew --prefix raylib)
-    RAYFLAGS := -I$(RAYLIB_PREFIX)/include -L$(RAYLIB_PREFIX)/lib -lraylib \
-		-framework IOKit \
-		-framework Cocoa \
-		-framework OpenGL
-else ifeq ($(UNAME_S),Linux)
-    RAYFLAGS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
-else
-    $(error Unsupported OS: $(UNAME_S))
-endif
+compile: configure
+	cmake --build $(BUILD_DIR)
 
-DEFAULT_GOAL := run
-
-run: compile
-	./$(TARGET)
-
-compile: $(SOURCES)
-	$(CXX) $(SOURCES) $(CXXFLAGS) $(RAYFLAGS) \
-	-o $(TARGET)
+run: configure
+	clear
+	cmake --build $(BUILD_DIR) --target run
 
 clean:
-	rm -f $(TARGET)
+	rm -rf $(BUILD_DIR) bin
