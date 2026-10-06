@@ -1,5 +1,6 @@
-#include "character.hpp"
-#include "ui.hpp"
+#include "./engine/engine.hpp"
+#include "./character.hpp"
+#include "./ui.hpp"
 
 const int screenWidth = 800;
 const int screenHeight = 450;

@@ -16,10 +16,10 @@ void Character::Update(float dt) {
 }
 
 void Character::HandleMovement() {
-    if (IsKeyDown(KEY_RIGHT))   this->position.x += this->speed;
-    if (IsKeyDown(KEY_LEFT))    this->position.x -= this->speed;
-    if (IsKeyDown(KEY_UP))      this->position.y -= this->speed;
-    if (IsKeyDown(KEY_DOWN))    this->position.y += this->speed;
+    if (hash::actionDown(Action::MoveRight))    this->position.x += this->speed;
+    if (hash::actionDown(Action::MoveLeft))     this->position.x -= this->speed;
+    if (hash::actionDown(Action::MoveDown))     this->position.y += this->speed;
+    if (hash::actionDown(Action::MoveUp))       this->position.y -= this->speed;
 }
 
 void Character::LogPosition() {

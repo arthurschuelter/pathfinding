@@ -17,6 +17,9 @@ src/character.hpp
 
 src/ui.cpp 
 src/ui.hpp
+
+src/engine/engine.cpp 
+src/engine/engine.hpp
 )
 
 add_executable(game ${SOURCES})
