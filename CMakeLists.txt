@@ -8,7 +8,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Target and sources (output: bin/game.out)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-set(SOURCES src/main.cpp src/character.cpp src/character.hpp)
+set(SOURCES 
+
+src/main.cpp 
+
+src/character.cpp 
+src/character.hpp
+
+src/ui.cpp 
+src/ui.hpp
+)
 
 add_executable(game ${SOURCES})
 set_target_properties(game PROPERTIES
