@@ -12,6 +12,9 @@ set(SOURCES
 
 src/main.cpp 
 
+src/entity.hpp
+src/entity.cpp
+
 src/character.cpp 
 src/character.hpp
 

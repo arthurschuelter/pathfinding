@@ -6,7 +6,8 @@ Character::Character() {
     this->position = Vector2 {0, 0};
     this->speed = 2.0f;
     this->color = RED;
-    this->size = 32;
+    this->width = 32;
+    this->height = 32;
 }
 
 void Character::Update(float dt) {
@@ -27,11 +28,11 @@ void Character::LogPosition() {
 }
 
 void Character::DrawCharacter() {
-    DrawRectangle(
+    hash::DrawRectangle(
         this->position.x, 
         this->position.y, 
-        this->size, 
-        this->size, 
+        this->width, 
+        this->height, 
         this->color
     );
 }

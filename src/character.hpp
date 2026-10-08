@@ -1,9 +1,11 @@
 #pragma once
 
 #include "./engine/engine.hpp"
+#include "entity.hpp"
+
 #include <iostream>
 
-class Character {
+class Character: public Entity {
 public: 
     Character();
 
@@ -13,8 +15,7 @@ public:
     void HandleMovement();
     void LogPosition();
 
-    Vector2 position;
-    float size;
+    // Vector2 position;
+    // float size;
     float speed;
-    Color color;
 };

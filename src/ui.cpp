@@ -4,9 +4,9 @@ Ui::Ui(int screenWidth, int screenHeight)
     : screenWidth(screenWidth), screenHeight(screenHeight) {
 
 
-    Image checkedImage = GenImageChecked(screenWidth, screenHeight, 20, 20, LIGHTGRAY, GRAY);
-    this->backgroundTexture = LoadTextureFromImage(checkedImage);
-    UnloadImage(checkedImage); 
+    Image checkedImage = hash::GenImageChecked(screenWidth, screenHeight, 20, 20, LIGHTGRAY, GRAY);
+    this->backgroundTexture = hash::LoadTextureFromImage(checkedImage);
+    hash::UnloadImage(checkedImage); 
 }
 
 void Ui::Update(float dt) {
@@ -17,23 +17,23 @@ void Ui::Update(float dt) {
 void Ui::DrawTestBox() {
     std::string os = std::string("Congrats! raylib is working on ") + osname();
 
-    DrawRectangle(
+    hash::DrawRectangle(
         this->posX, 
         this->posY, 
         this->recWidth, 
         this->recHeight, 
-        Color {80, 80, 80, 255} // DARKGRAY
+        Color {80, 80, 80, 255}
     );
 
     int fontsize = 20;
-    int textWidth = MeasureText(os.c_str(), fontsize);
+    int textWidth = hash::MeasureText(os.c_str(), fontsize);
     int textX = (this->screenWidth - textWidth) / 2;
     int textY = (this->screenHeight - fontsize) / 2;
-    DrawText(os.c_str(), textX, textY, fontsize, LIGHTGRAY);
+    hash::DrawText(os.c_str(), textX, textY, fontsize, LIGHTGRAY);
 }
 
 void Ui::DrawBackgound() {
-    DrawTexture(backgroundTexture, 0, 0, WHITE);
+    hash::DrawTexture(backgroundTexture, 0, 0, WHITE);
 }
 
 std::string Ui::osname() {

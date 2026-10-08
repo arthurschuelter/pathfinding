@@ -6,23 +6,23 @@ const int screenWidth = 800;
 const int screenHeight = 450;
 
 int main(void) {
-    InitWindow(screenWidth, screenHeight, "raylib example - basic window");
-    SetTargetFPS(60);
+    hash::InitWindow(screenWidth, screenHeight, "raylib example - basic window");
+    hash::SetTargetFPS(60);
 
     Character* c = new Character();
     Ui* ui = new Ui(screenWidth, screenHeight);
 
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
+    while (!hash::WindowShouldClose()) {
+        hash::BeginDrawing();
+            hash::ClearBackground(RAYWHITE);
 
-            float dt = GetFrameTime();
+            float dt = hash::GetFrameTime();
             ui->Update(dt);
             c->Update(dt);
 
-        EndDrawing();
+        hash::EndDrawing();
     }
 
-    CloseWindow();
+    hash::CloseWindow();
     return 0;
 }
